@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== BACKGROUND IMAGE ===== */
+
+body {
+  background: url("https://i.ibb.co/Kp81T9TJ/bg2.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Soft overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+/* ================= GRID ================= */
+
+.grid {
+  column-count: 2;
+  column-gap: 20px;
+  padding: 24px;
+}
+
+.card {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  border-radius: 28px;
+}
+
+/* ================= VIEWER ================= */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.viewerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.videoSlide {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.videoSlide video {
+  width: 90%;
+  height: 85%;
+  object-fit: contain;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  background: black;
+}
+
+.tapOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* ================= ACTION BAR ================= */
+
+.actionBar {
+  position: absolute;
+  right: 30px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ===== HEART BUTTON ===== */
+
+.heartBtn {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: #e60039;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(230, 0, 57, 0.5);
+  position: relative;
+}
+
+.heartBtn svg {
+  width: 38px;
+  height: 38px;
+  fill: white;
+}
+
+/* Pulse animation */
+.heartBtn.pulse {
+  animation: pulseAnim 0.35s ease;
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+/* Floating hearts */
+.floating-heart {
+  position: absolute;
+  font-size: 18px;
+  animation: floatUp 1s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.6);
+  }
+}
+
+/* Other buttons */
+
+.circleBtn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+  font-size: 22px;
+}
+
+/* Divider */
+
+.divider {
+  width: 2px;
+  height: 40px;
+  background: rgba(230, 0, 57, 0.3);
+  border-radius: 2px;
+}
+
+/* Back button */
+
+.backBtn {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  background: linear-gradient(135deg, #ff5c7a, #e60039);
+  color: white;
+  border: none;
+  padding: 16px 30px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(230,0,57,0.4);
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.backBtn:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
